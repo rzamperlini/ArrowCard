@@ -1,1 +1,25 @@
-{"visual":{"name":"arrowCard","displayName":"ArrowCard","guid":"arrowCard9DEF2EE1FAAA490C84DE60EBCD0329A6","visualClassName":"Visual","version":"1.0.0","description":"","supportUrl":"","gitHubUrl":""},"apiVersion":"2.6.0","author":{"name":"","email":""},"assets":{"icon":"assets/icon.png"},"externalJS":null,"style":"style/visual.less","capabilities":"capabilities.json","dependencies":null,"stringResources":[]}
+{
+    "visual": {
+        "name": "arrowCard",
+        "displayName": "ArrowCard",
+        "guid": "arrowCard9DEF2EE1FAAA490C84DE60EBCD0329A6",
+        "visualClassName": "Visual",
+        "version": "1.0.0",
+        "description": "",
+        "supportUrl": "",
+        "gitHubUrl": ""
+    },
+    "apiVersion": "2.6.0",
+    "author": {
+        "name": "Rodrigo Zamperlini",
+        "email": "rzamperlini@gmail.com"
+    },
+    "assets": {
+        "icon": "assets/icon.png"
+    },
+    "externalJS": null,
+    "style": "style/visual.less",
+    "capabilities": "capabilities.json",
+    "dependencies": null,
+    "stringResources": []
+}
