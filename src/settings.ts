@@ -30,7 +30,7 @@ import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
 export class ArrowSettings {
-  public arrowColor: string = "blue";
+  public arrowColor: string = "green";
   public arrowThickness: number = 2;
 }
 export class VisualSettings extends DataViewObjectsParser {

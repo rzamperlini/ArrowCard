@@ -73,25 +73,46 @@ export class Visual implements IVisual {
         let width: number = options.viewport.width;
         let height: number = options.viewport.height;
 
+        const s:number = 20;
+        
+        let x1:number = s;
+        let x2:number = (width/4) + (s/2);
+        let x3:number = width/2;
+        let x4:number = (3*width/4) - (s/2);
+        let x5:number = width - s;
+
+        let y1:number = s;
+        let y2:number = height/2;
+        let y3:number = height - s;
+
+        let p1:string = ""+x3+","+y1+" ";
+        let p2:string = ""+x5+","+y2+" ";
+        let p3:string = ""+x4+","+y2+" ";
+        let p4:string = ""+x4+","+y3+" ";
+        let p5:string = ""+x2+","+y3+" ";
+        let p6:string = ""+x2+","+y2+" ";
+        let p7:string = ""+x1+","+y2;
+
+        var poly:string = p1+p2+p3+p4+p5+p6+p7;         
+
+        console.log(poly);
+
         this.svg.attr("width", width);
         this.svg.attr("height", height);
 
         this.visualSettings = VisualSettings.parse<VisualSettings>(dataView);
 
         this.visualSettings.arrow.arrowThickness = Math.max(0, this.visualSettings.arrow.arrowThickness);
-        this.visualSettings.arrow.arrowThickness = Math.min(10, this.visualSettings.arrow.arrowThickness);
+        this.visualSettings.arrow.arrowThickness = Math.min(20, this.visualSettings.arrow.arrowThickness);
 
         this.arrow
-            .attr("points", width/2+",0 "+
-                            "0,"+height/2 + " "+
-                            width+","+height/2+ " "+
-                            width/2+",0")
+            .attr("points", poly)
             .style("fill", this.visualSettings.arrow.arrowColor)
             .style("stroke", "black")
             .style("strokeWidth", this.visualSettings.arrow.arrowThickness);
 
 
-        let fontSizeValue: number = Math.min(width, height) / 5;
+       /*  let fontSizeValue: number = Math.min(width, height) / 5;
         this.textValue
             .text(<string>dataView.single.value)
             .attr("x", "50%")
@@ -106,7 +127,7 @@ export class Visual implements IVisual {
             .attr("y", height / 2)
             .attr("dy", fontSizeValue / 1.2)
             .attr("text-anchor", "middle")
-            .style("font-size", fontSizeLabel + "px");
+            .style("font-size", fontSizeLabel + "px"); */
     }
 
     /**
