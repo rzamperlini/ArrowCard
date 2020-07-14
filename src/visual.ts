@@ -80,6 +80,7 @@ export class Visual implements IVisual {
         this.visualSettings.arrow.arrowThickness = Math.min(20, this.visualSettings.arrow.arrowThickness);
 
         this.arrow.configArrow(20,width,height);
+        this.arrow.setDirection(this.visualSettings.arrow.arrowDirection);
         this.arrow.setColor(this.visualSettings.arrow.arrowColor);
         this.arrow.setBorderColor(this.visualSettings.arrow.arrowBorderColor);
         this.arrow.setThickness(this.visualSettings.arrow.arrowThickness);  

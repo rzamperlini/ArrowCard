@@ -4,12 +4,22 @@
             "displayName": "Measure",
             "name": "measure",
             "kind": "Measure"
+        },
+        {
+            "displayName": "Category",
+            "name": "category",
+            "kind": "Grouping"
         }
     ],
     "objects": {
         "arrow": {
             "displayName": "Arrow",
             "properties": {
+               "arrowDirection": {
+                    "displayName": "Direction",
+                    "description": "Choose the arrow's direction",
+                    "type": {"bool": true}
+                },
                 "arrowColor": {
                     "displayName": "Color",
                     "description": "The fill color of the arrow.",
@@ -39,6 +49,7 @@
                         "numeric": true
                     }
                 }
+                
             }
         }
     },

@@ -1,10 +1,12 @@
 
 export class Arrow {
 
-    public color:string;
-    public borderColor:string;
+    public color;
+    public borderColor;
     public thickness:number;
     
+    private direction:boolean;
+
     private x1:number = 0;
     private x2:number = 0;
     private x3:number = 0;
@@ -15,9 +17,10 @@ export class Arrow {
     private y2:number = 0;
     private y3:number = 0;
 
-    private poly:string = "";
+    private poly = "";
 
     constructor(){
+        this.direction = true;
         this.color = "green";
         this.borderColor = "black";
         this.thickness = 2;
@@ -42,34 +45,65 @@ export class Arrow {
         this.y3 = height - space;
     }
 
-    public getArrowPoints():string
+    public getArrowPoints()
     {
-        let p1:string = ""+this.x3+","+this.y1+" ";
-        let p2:string = ""+this.x5+","+this.y2+" ";
-        let p3:string = ""+this.x4+","+this.y2+" ";
-        let p4:string = ""+this.x4+","+this.y3+" ";
-        let p5:string = ""+this.x2+","+this.y3+" ";
-        let p6:string = ""+this.x2+","+this.y2+" ";
-        let p7:string = ""+this.x1+","+this.y2;
+        let p1:string,
+            p2:string,
+            p3:string,
+            p4:string,
+            p5:string,
+            p6:string,
+            p7:string; 
 
+        if(this.direction ?? true)
+        {
+             p1 = ""+this.x3+","+this.y1+" ";
+             p2 = ""+this.x5+","+this.y2+" ";
+             p3 = ""+this.x4+","+this.y2+" ";
+             p4 = ""+this.x4+","+this.y3+" ";
+             p5 = ""+this.x2+","+this.y3+" ";
+             p6 = ""+this.x2+","+this.y2+" ";
+             p7 = ""+this.x1+","+this.y2;
+        }  
+        else
+        {
+             p1 = ""+this.x3+","+this.y3+" ";
+             p2 = ""+this.x1+","+this.y2+" ";
+             p3 = ""+this.x2+","+this.y2+" ";
+             p4 = ""+this.x2+","+this.y1+" ";
+             p5 = ""+this.x4+","+this.y1+" ";
+             p6 = ""+this.x4+","+this.y2+" ";
+             p7 = ""+this.x5+","+this.y2;
+        }     
+        
+        
         return p1+p2+p3+p4+p5+p6+p7;
     }
 
-    public setColor(color:string){
+    public setDirection(direction:boolean){
+
+        this.direction = direction;
+    }
+
+    public getDirection(){
+        return this.direction;
+    }
+
+    public setColor(color){
 
         this.color = color ?? "green";
     }
 
-    public getColor():string{
+    public getColor(){
         return this.color;
     }
 
-    public setBorderColor(borderColor:string){
+    public setBorderColor(borderColor){
 
         this.borderColor = borderColor ?? "black";
     }
 
-    public getBorderColor():string{
+    public getBorderColor(){
         return this.borderColor;
     }
 
