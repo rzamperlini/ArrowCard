@@ -40,6 +40,8 @@ import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnume
 import { VisualSettings } from "./settings";
 import * as d3 from "d3";
 
+import {Arrow} from "./Model/Arrow";
+
 type Selection<T extends d3.BaseType> = d3.Selection<T, any, any, any>;
 
 export class Visual implements IVisual {
@@ -47,9 +49,8 @@ export class Visual implements IVisual {
     private host: IVisualHost;
     private svg: Selection<SVGElement>;
     private container: Selection<SVGElement>;
-    private arrow: Selection<SVGElement>;
-    private textValue: Selection<SVGElement>;
-    private textLabel: Selection<SVGElement>;
+    private arrowElement: Selection<SVGElement>;
+    private  arrow: Arrow;
     private visualSettings: VisualSettings;
 
     constructor(options: VisualConstructorOptions) {
@@ -60,43 +61,16 @@ export class Visual implements IVisual {
             .classed('ArrowCard', true);
         this.container = this.svg.append("g")
             .classed('container', true);
-        this.arrow = this.container.append("polygon")
+        this.arrowElement = this.container.append("polygon")
             .classed('arrow', true);
-        this.textValue = this.container.append("text")
-            .classed("textValue", true);
-        this.textLabel = this.container.append("text")
-            .classed("textLabel", true);
+
+        this.arrow = new Arrow();
     }
 
     public update(options: VisualUpdateOptions) {
         let dataView: DataView = options.dataViews[0];
         let width: number = options.viewport.width;
         let height: number = options.viewport.height;
-
-        const s:number = 20;
-        
-        let x1:number = s;
-        let x2:number = (width/4) + (s/2);
-        let x3:number = width/2;
-        let x4:number = (3*width/4) - (s/2);
-        let x5:number = width - s;
-
-        let y1:number = s;
-        let y2:number = height/2;
-        let y3:number = height - s;
-
-        let p1:string = ""+x3+","+y1+" ";
-        let p2:string = ""+x5+","+y2+" ";
-        let p3:string = ""+x4+","+y2+" ";
-        let p4:string = ""+x4+","+y3+" ";
-        let p5:string = ""+x2+","+y3+" ";
-        let p6:string = ""+x2+","+y2+" ";
-        let p7:string = ""+x1+","+y2;
-
-        var poly:string = p1+p2+p3+p4+p5+p6+p7;         
-
-        console.log(poly);
-
         this.svg.attr("width", width);
         this.svg.attr("height", height);
 
@@ -105,29 +79,16 @@ export class Visual implements IVisual {
         this.visualSettings.arrow.arrowThickness = Math.max(0, this.visualSettings.arrow.arrowThickness);
         this.visualSettings.arrow.arrowThickness = Math.min(20, this.visualSettings.arrow.arrowThickness);
 
-        this.arrow
-            .attr("points", poly)
-            .style("fill", this.visualSettings.arrow.arrowColor)
-            .style("stroke", "black")
-            .style("strokeWidth", this.visualSettings.arrow.arrowThickness);
+        this.arrow.configArrow(20,width,height);
+        this.arrow.setColor(this.visualSettings.arrow.arrowColor);
+        this.arrow.setBorderColor(this.visualSettings.arrow.arrowBorderColor);
+        this.arrow.setThickness(this.visualSettings.arrow.arrowThickness);  
 
+        this.arrowElement.attr("points", this.arrow.getArrowPoints())
+            .style("fill", this.arrow.getColor())
+            .style("stroke", this.arrow.getBorderColor())
+            .style("stroke-width", this.arrow.getThickness());
 
-       /*  let fontSizeValue: number = Math.min(width, height) / 5;
-        this.textValue
-            .text(<string>dataView.single.value)
-            .attr("x", "50%")
-            .attr("y", "50%")
-            .attr("dy", "0.35em")
-            .attr("text-anchor", "middle")
-            .style("font-size", fontSizeValue + "px");
-        let fontSizeLabel: number = fontSizeValue / 4;
-        this.textLabel
-            .text(dataView.metadata.columns[0].displayName)
-            .attr("x", "50%")
-            .attr("y", height / 2)
-            .attr("dy", fontSizeValue / 1.2)
-            .attr("text-anchor", "middle")
-            .style("font-size", fontSizeLabel + "px"); */
     }
 
     /**

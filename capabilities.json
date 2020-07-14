@@ -21,6 +21,17 @@
                         }
                     }
                 },
+                "arrowBorderColor": {
+                    "displayName": "Border",
+                    "description": "The color of the arrow's borders.",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
                 "arrowThickness": {
                     "displayName": "Thickness",
                     "description": "The arrow thickness.",
