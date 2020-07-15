@@ -15,10 +15,23 @@
         "arrow": {
             "displayName": "Arrow",
             "properties": {
-               "arrowDirection": {
-                    "displayName": "Direction",
-                    "description": "Choose the arrow's direction",
-                    "type": {"bool": true}
+               "arrowOrientation": {
+                    "displayName": "Orientation",
+                    "description": "Choose the arrow's orientation.",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Vertical",
+                                "displayNameKey": "vertical",
+                                "value": "V"
+                            },
+                            {
+                                "displayName": "Horizontal",
+                                "displayNameKey": "horizontal",
+                                "value": "H"
+                            }   
+                         ]
+                    }
                 },
                 "arrowColor": {
                     "displayName": "Color",

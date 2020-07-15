@@ -5,7 +5,8 @@ export class Arrow {
     public borderColor;
     public thickness:number;
     
-    private direction:boolean;
+    private orientation:string;
+    private value:number;
 
     private x1:number = 0;
     private x2:number = 0;
@@ -16,11 +17,14 @@ export class Arrow {
     private y1:number = 0;
     private y2:number = 0;
     private y3:number = 0;
+    private y4:number = 0;
+    private y5:number = 0;
 
     private poly = "";
 
     constructor(){
-        this.direction = true;
+        this.orientation = "V";
+        this.value = 1;
         this.color = "green";
         this.borderColor = "black";
         this.thickness = 2;
@@ -41,8 +45,10 @@ export class Arrow {
         this.x5 = width - space;
 
         this.y1 = space;
-        this.y2 = height/2;
-        this.y3 = height - space;
+        this.y2 = (height/4) + (space/2);
+        this.y3 = height/2;
+        this.y4 = (3*height/4) - (space/2);
+        this.y5 = height - space;
     }
 
     public getArrowPoints()
@@ -55,38 +61,68 @@ export class Arrow {
             p6:string,
             p7:string; 
 
-        if(this.direction ?? true)
+        if(this.orientation == "V")
         {
-             p1 = ""+this.x3+","+this.y1+" ";
-             p2 = ""+this.x5+","+this.y2+" ";
-             p3 = ""+this.x4+","+this.y2+" ";
-             p4 = ""+this.x4+","+this.y3+" ";
-             p5 = ""+this.x2+","+this.y3+" ";
-             p6 = ""+this.x2+","+this.y2+" ";
-             p7 = ""+this.x1+","+this.y2;
+            if(this.value >= 0)
+            {
+                p1 = ""+this.x3+","+this.y1+" ";
+                p2 = ""+this.x5+","+this.y3+" ";
+                p3 = ""+this.x4+","+this.y3+" ";
+                p4 = ""+this.x4+","+this.y5+" ";
+                p5 = ""+this.x2+","+this.y5+" ";
+                p6 = ""+this.x2+","+this.y3+" ";
+                p7 = ""+this.x1+","+this.y3;
+            }
+            else
+            {
+                p1 = ""+this.x3+","+this.y5+" ";
+                p2 = ""+this.x1+","+this.y3+" ";
+                p3 = ""+this.x2+","+this.y3+" ";
+                p4 = ""+this.x2+","+this.y1+" ";
+                p5 = ""+this.x4+","+this.y1+" ";
+                p6 = ""+this.x4+","+this.y3+" ";
+                p7 = ""+this.x5+","+this.y3;
+            }
         }  
         else
         {
-             p1 = ""+this.x3+","+this.y3+" ";
-             p2 = ""+this.x1+","+this.y2+" ";
-             p3 = ""+this.x2+","+this.y2+" ";
-             p4 = ""+this.x2+","+this.y1+" ";
-             p5 = ""+this.x4+","+this.y1+" ";
-             p6 = ""+this.x4+","+this.y2+" ";
-             p7 = ""+this.x5+","+this.y2;
+            if(this.value >= 0)
+            {
+                p1 = ""+this.x5+","+this.y3+" ";
+                p2 = ""+this.x3+","+this.y5+" ";
+                p3 = ""+this.x3+","+this.y4+" ";
+                p4 = ""+this.x1+","+this.y4+" ";
+                p5 = ""+this.x1+","+this.y2+" ";
+                p6 = ""+this.x3+","+this.y2+" ";
+                p7 = ""+this.x3+","+this.y1;
+            }
+            else
+            {
+                p1 = ""+this.x1+","+this.y3+" ";
+                p2 = ""+this.x3+","+this.y1+" ";
+                p3 = ""+this.x3+","+this.y2+" ";
+                p4 = ""+this.x5+","+this.y2+" ";
+                p5 = ""+this.x5+","+this.y4+" ";
+                p6 = ""+this.x3+","+this.y4+" ";
+                p7 = ""+this.x3+","+this.y5;
+            }
         }     
         
         
         return p1+p2+p3+p4+p5+p6+p7;
     }
 
-    public setDirection(direction:boolean){
+    public setDirection(orientation:string){
 
-        this.direction = direction;
+        this.orientation = orientation;
     }
 
     public getDirection(){
-        return this.direction;
+        return this.orientation;
+    }
+
+    public setValue(value:number){
+        this.value = value;
     }
 
     public setColor(color){
