@@ -5,9 +5,9 @@
         "guid": "arrowCard9DEF2EE1FAAA490C84DE60EBCD0329A6",
         "visualClassName": "Visual",
         "version": "1.0.0",
-        "description": "",
-        "supportUrl": "",
-        "gitHubUrl": ""
+        "description": "This visual draws an arrow on the data view.",
+        "supportUrl": "https://github.com/rzamperlini/ArrowCard/blob/master/README.md",
+        "gitHubUrl": "https://github.com/rzamperlini/ArrowCard"
     },
     "apiVersion": "2.6.0",
     "author": {
