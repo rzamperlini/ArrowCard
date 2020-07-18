@@ -58,7 +58,8 @@ export class Visual implements IVisual {
         
         this.svg = d3.select(options.element)
             .append('svg')
-            .classed('ArrowCard', true);
+            .classed('ArrowCard', true)
+            .attr('id','ArrowCardSVG');
         this.container = this.svg.append("g")
             .classed('container', true);
         this.arrowElement = this.container.append("polygon")

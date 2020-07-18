@@ -127,7 +127,7 @@ export class Arrow {
 
     public setColor(color){
 
-        this.color = color ?? "green";
+        this.color = color;
     }
 
     public getColor(){
@@ -136,7 +136,7 @@ export class Arrow {
 
     public setBorderColor(borderColor){
 
-        this.borderColor = borderColor ?? "black";
+        this.borderColor = borderColor;
     }
 
     public getBorderColor(){
@@ -144,7 +144,7 @@ export class Arrow {
     }
 
     public setThickness(thickness:number){
-        this.thickness = Math.max(0,thickness ?? 0);
+        this.thickness = Math.max(0,thickness);
         this.thickness = Math.min(10,this.thickness);
     }
         

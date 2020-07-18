@@ -3,9 +3,10 @@ import powerbi from "powerbi-visuals-api";
 import { ArrowBuilder } from "./VisualBuilder";
 
 import {Visual as VisualClass} from "../src/visual";
+import { debug } from "webpack";
 
 
-describe("ArrowCard", () => {
+describe("ArrowCard:", () => {
     let visualBuilder: ArrowBuilder;
     let dataView: DataView;
 
@@ -14,6 +15,6 @@ describe("ArrowCard", () => {
     });
 
     it("root DOM element is created", () => {
-        expect(visualBuilder.mainElement).toBeInDOM();
+        expect(visualBuilder.getMainElement()).toBeInDOM();
     });
 });

@@ -14,7 +14,7 @@ export class ArrowBuilder extends VisualBuilderBase<VisualClass> {
         return new VisualClass(options);
     }
 
-    public get mainElement() {
-        return this.element.children.namedItem("arrow");
+    public getMainElement() {
+        return this.element.children.namedItem("ArrowCardSVG");
     }
 }

@@ -11,7 +11,7 @@ const webpackConfig = require("./test.webpack.config.js");
 const tsconfig = require("./tsconfig.json");
 const path = require("path");
 
-const testRecursivePath = "test/visualTest.ts";
+const testRecursivePath = "test/*.ts";
 const srcOriginalRecursivePath = "src/**/*.ts";
 const coverageFolder = "coverage";
 
